@@ -1,27 +1,36 @@
 package com.example.medmate;
 
 public class Medicine {
+    private String medicinesID;  // Changed to match Firebase structure
     private String name;
-    private int count;
-    private String time;
-    private String type;
+    private String daysFrequency;  // Matches Firebase
+    private String dosage;  // Matches Firebase
+    private String lowStockReminder;  // Matches Firebase
+    private String medicineStock;  // Matches Firebase
+    private String medicineType;  // Matches Firebase
+    private String timeSelection;  // Matches Firebase
     private boolean taken;
-    private String daysFrequency;
-    private String dosage;
-    private String lowStockReminder;
-    private String medicineStock;
 
-    public Medicine(String name, int count, String time, String type, boolean taken,
-                    String daysFrequency, String dosage, String lowStockReminder, String medicineStock) {
-        this.name = name;
-        this.count = count;
-        this.time = time;
-        this.type = type;
-        this.taken = taken;
+    public Medicine(String medicinesID, int name, String daysFrequency, String dosage,
+                    boolean lowStockReminder, String medicineStock, String medicineType,
+                    String timeSelection, String taken) {
+        this.medicinesID = medicinesID;
+        this.name = String.valueOf(name);
         this.daysFrequency = daysFrequency;
         this.dosage = dosage;
-        this.lowStockReminder = lowStockReminder;
+        this.lowStockReminder = String.valueOf(lowStockReminder);
         this.medicineStock = medicineStock;
+        this.medicineType = medicineType;
+        this.timeSelection = timeSelection;
+        this.taken = Boolean.parseBoolean(taken);
+    }
+
+    public String getMedicinesID() {
+        return medicinesID;
+    }
+
+    public void setMedicinesID(String medicinesID) {
+        this.medicinesID = medicinesID;
     }
 
     public String getName() {
@@ -30,38 +39,6 @@ public class Medicine {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public boolean isTaken() {
-        return taken;
-    }
-
-    public void setTaken(boolean taken) {
-        this.taken = taken;
     }
 
     public String getDaysFrequency() {
@@ -94,5 +71,29 @@ public class Medicine {
 
     public void setMedicineStock(String medicineStock) {
         this.medicineStock = medicineStock;
+    }
+
+    public String getMedicineType() {
+        return medicineType;
+    }
+
+    public void setMedicineType(String medicineType) {
+        this.medicineType = medicineType;
+    }
+
+    public String getTimeSelection() {
+        return timeSelection;
+    }
+
+    public void setTimeSelection(String timeSelection) {
+        this.timeSelection = timeSelection;
+    }
+
+    public boolean isTaken() {
+        return taken;
+    }
+
+    public void setTaken(boolean taken) {
+        this.taken = taken;
     }
 }

@@ -80,13 +80,10 @@ public class medicine_dosage_selection extends AppCompatActivity {
             Log.d("FirebaseDebug", "User is logged in: " + user.getUid());
         }
 
-        // Get the user ID
         String userId = user.getUid();
 
-        // Create a unique ID for the medicine
         String medicineId = mDatabase.child("users").child(userId).child("medicines").push().getKey();
 
-        // Create the Medicine object
         Medicine medicine = new Medicine(
                 medicineName,
                 count,
@@ -99,7 +96,6 @@ public class medicine_dosage_selection extends AppCompatActivity {
                 String.valueOf(amount)
         );
 
-        // Save the medicine under the user's medicines node
         if (medicineId != null) {
             mDatabase.child("users").child(userId).child("medicines").child(medicineId).setValue(medicine)
                     .addOnSuccessListener(aVoid -> {

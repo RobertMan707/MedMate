@@ -29,14 +29,17 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.Medici
     public void onBindViewHolder(@NonNull MedicineViewHolder holder, int position) {
         Medicine medicine = medicineList.get(position);
 
+        // Bind data to views
         holder.nameTextView.setText(medicine.getName());
-        holder.countTextView.setText("Count: " + medicine.getCount());
-        holder.timeTextView.setText("Time: " + medicine.getTime());
-        holder.typeTextView.setText("Type: " + medicine.getType());
+        holder.dosageTextView.setText("Dosage: " + medicine.getDosage());
+        holder.timeTextView.setText("Time: " + medicine.getTimeSelection());
+        holder.typeTextView.setText("Type: " + medicine.getMedicineType());
+        holder.daysFrequencyTextView.setText("Frequency: " + medicine.getDaysFrequency());
 
-        holder.dosageTextView.setText("Dosage: " + medicine.getDosage() + " " + medicine.getType());
-
-        if (medicine.getCount() <= Integer.parseInt(medicine.getLowStockReminder())) {
+        // Check for low stock
+        int stock = Integer.parseInt(medicine.getMedicineStock());
+        int lowStockReminder = Integer.parseInt(medicine.getLowStockReminder());
+        if (stock <= lowStockReminder) {
             holder.lowStockWarningTextView.setVisibility(View.VISIBLE);
             holder.lowStockWarningTextView.setText("Low Stock! Reminder set for " + medicine.getLowStockReminder());
         } else {
@@ -56,20 +59,20 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.Medici
     }
 
     private void markMedicineAsTaken(Medicine medicine) {
-
+        // TODO: Implement logic to update Firebase when a medicine is marked as taken
     }
 
     public static class MedicineViewHolder extends RecyclerView.ViewHolder {
-        TextView nameTextView, countTextView, timeTextView, typeTextView, dosageTextView, lowStockWarningTextView;
+        TextView nameTextView, dosageTextView, timeTextView, typeTextView, daysFrequencyTextView, lowStockWarningTextView;
         CheckBox checkbox;
 
         public MedicineViewHolder(View itemView) {
             super(itemView);
             nameTextView = itemView.findViewById(R.id.medicine_name);
-            countTextView = itemView.findViewById(R.id.medicine_count);
+            dosageTextView = itemView.findViewById(R.id.medicine_dosage);
             timeTextView = itemView.findViewById(R.id.medicine_time);
             typeTextView = itemView.findViewById(R.id.medicine_type);
-            dosageTextView = itemView.findViewById(R.id.medicine_dosage);
+            daysFrequencyTextView = itemView.findViewById(R.id.medicine_days_frequency);
             lowStockWarningTextView = itemView.findViewById(R.id.medicine_low_stock_warning);
             checkbox = itemView.findViewById(R.id.medicine_checkbox);
         }

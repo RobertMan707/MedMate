@@ -3,8 +3,9 @@ package com.example.medmate;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,13 +13,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class Home extends AppCompatActivity {
 
@@ -71,23 +76,33 @@ public class Home extends AppCompatActivity {
     }
 
     private void loadMedicines() {
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        DatabaseReference medicinesRef = FirebaseDatabase.getInstance().getReference("medicines");
+
+        medicineList.clear();
+
+        medicinesRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot) {
-                medicineList.clear();
-                for (com.google.firebase.database.DataSnapshot snapshot : dataSnapshot.getChildren()) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Medicine medicine = snapshot.getValue(Medicine.class);
+
                     if (medicine != null) {
                         medicineList.add(medicine);
                     }
                 }
+
                 adapter.notifyDataSetChanged();
+
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("FirebaseError", "Failed to load medicines: " + databaseError.getMessage());
             }
         });
     }
-}
+
+
+    }
+
+
