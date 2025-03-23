@@ -41,7 +41,6 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         recyclerView = findViewById(R.id.recyclerView);
-        nextMedicineTextView = findViewById(R.id.next_medicine_text);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MedicineAdapter(medicineList);

@@ -1,14 +1,14 @@
 package com.example.medmate;
 
 public class Medicine {
-    private String medicinesID;  // Changed to match Firebase structure
+    private String medicinesID;
     private String name;
-    private String daysFrequency;  // Matches Firebase
-    private String dosage;  // Matches Firebase
-    private String lowStockReminder;  // Matches Firebase
-    private String medicineStock;  // Matches Firebase
-    private String medicineType;  // Matches Firebase
-    private String timeSelection;  // Matches Firebase
+    private String daysFrequency;
+    private String dosage;
+    private String lowStockReminder;
+    private String medicineStock;
+    private String medicineType;
+    private String timeSelection;
     private boolean taken;
 
     public Medicine(String medicinesID, int name, String daysFrequency, String dosage,

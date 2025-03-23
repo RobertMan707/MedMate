@@ -31,15 +31,15 @@ public class TimePicker extends AppCompatActivity {
 
         for (int i = 0; i < frequency; i++) {
             NumberPicker hourPicker = new NumberPicker(this);
-            hourPicker.setMinValue(0);
+            hourPicker.setMinValue(00);
             hourPicker.setMaxValue(23);
             hourPicker.setValue(8);
             hourPicker.setWrapSelectorWheel(true);
 
             NumberPicker minutePicker = new NumberPicker(this);
-            minutePicker.setMinValue(0);
+            minutePicker.setMinValue(00);
             minutePicker.setMaxValue(59);
-            minutePicker.setValue(0);
+            minutePicker.setValue(00);
             minutePicker.setWrapSelectorWheel(true);
 
             LinearLayout pickerContainer = new LinearLayout(this);

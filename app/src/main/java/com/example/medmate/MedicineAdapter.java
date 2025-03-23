@@ -29,14 +29,12 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.Medici
     public void onBindViewHolder(@NonNull MedicineViewHolder holder, int position) {
         Medicine medicine = medicineList.get(position);
 
-        // Bind data to views
         holder.nameTextView.setText(medicine.getName());
         holder.dosageTextView.setText("Dosage: " + medicine.getDosage());
         holder.timeTextView.setText("Time: " + medicine.getTimeSelection());
         holder.typeTextView.setText("Type: " + medicine.getMedicineType());
         holder.daysFrequencyTextView.setText("Frequency: " + medicine.getDaysFrequency());
 
-        // Check for low stock
         int stock = Integer.parseInt(medicine.getMedicineStock());
         int lowStockReminder = Integer.parseInt(medicine.getLowStockReminder());
         if (stock <= lowStockReminder) {

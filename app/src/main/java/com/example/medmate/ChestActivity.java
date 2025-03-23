@@ -19,8 +19,6 @@ public class ChestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chest);
 
         bottomNav = findViewById(R.id.nav_menu);
-
-        // Select the Chest menu item by default
         bottomNav.setSelectedItemId(R.id.nav_chest);
 
         bottomNav.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {

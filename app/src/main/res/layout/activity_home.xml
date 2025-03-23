@@ -13,18 +13,7 @@
         app:layout_constraintBottom_toTopOf="@id/nav_menu"
         android:padding="8dp"/>
 
-    <TextView
-        android:id="@+id/next_medicine_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Next Medicine"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@id/recyclerView"
-        app:layout_constraintStart_toStartOf="parent"
-        android:padding="8dp"/>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_menu"
